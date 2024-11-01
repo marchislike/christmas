@@ -1,10 +1,7 @@
 package com.march.christmas.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -13,6 +10,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Data //toBuilder()메서드 자동으로 생성하려면 @Builder와 함께 필요
 public class Post {
 
     @Id
@@ -47,6 +45,14 @@ public class Post {
     @PreUpdate
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();
+    }
+
+    //toBuilder() 에러로 임시 추가
+    // 복사 생성자 추가
+    public Post(Post other) {
+        this.id = other.id;
+        this.title = other.title;
+        this.content = other.content;
     }
 
 }
