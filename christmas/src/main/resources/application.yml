@@ -19,3 +19,18 @@ jwt:
 
 server:
   port: 8080
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+
+# Swagger Configuration
+springdoc:
+  swagger-ui:
+    tags-sorter: alpha
+    operations-sorter : alpha
+    doc-expansion : full
